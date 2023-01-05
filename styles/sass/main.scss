@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+// FONTS
+$font-main: 'Space Mono', monospace;
+
+// COLORS
+$primary-strong-cyan: hsl(172, 67%, 45%);
+
+$neutral-very-dark-cyan: hsl(183, 100%, 15%) ;
+$neutral-dark-grayish-cyan: hsl(186, 14%, 43%) ;
+$neutral-grayish-cyan: hsl(184, 14%, 56%) ;
+$neutral-light-grayish-cyan: hsl(185, 41%, 84%) ;
+$neutral-very-light-grayish-cyan: hsl(189, 41%, 97%) ;
+$neutral-white: hsl(0, 0%, 100%) ;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: $font-main;
+    font-size: 24px;
+}
+
+body {
+    height: 100vh;
+    background-color: $neutral-light-grayish-cyan;
+
+    display: grid;
+    place-content: center;
+}
+
+.container {
+    display: grid;
+    gap: 2rem;
+
+    svg {
+        place-self: center;    
+    }
+}
+
+.calculator {
+    background-color: $neutral-white;
+    padding: 1rem;
+    border-radius: .65rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+
+    &__left-col {
+        display: grid;
+        gap: 1rem;
+
+        &__bill-input {
+            display: flex;
+            flex-direction: column;
+            
+            // label {}
+            #bill_input {
+                background-image: url(../../images/icon-dollar.svg);
+                background-repeat: no-repeat;
+                background-position-y: center;
+                background-position-x: .65rem;
+                text-align: right;
+                padding-right: .65rem;
+                
+            }
+        }
+
+        &__select-tip {
+
+            fieldset {border: none;}
+            // legend {}
+
+            &__options {
+
+                display: grid;
+                grid-template:
+                    "a a a"
+                    "a a a";
+                gap: .5rem;
+
+                input {
+                    width: 100px;
+                    padding: .2rem;
+                    background-color: $neutral-very-dark-cyan;
+                    border: 1px solid $neutral-very-dark-cyan;
+                    border-radius: .2rem;
+                }
+                #select_tip_custom_val {
+                    text-align: right;
+                    padding-right: .65rem;
+                }
+            }
+        }
+
+        &__num-of-ppl {
+            display: flex;
+            flex-direction: column;
+
+
+            // label {}
+            #num_of_ppl {
+                background-image: url(../../images/icon-person.svg);
+                background-repeat: no-repeat;
+                background-position-y: center;
+                background-position-x: .65rem;
+                text-align: right;
+                padding-right: .65rem;
+            }
+        }
+
+        label, legend {
+            font-size: .6rem;
+        }
+    }
+
+    &__right-col {
+        background-color: $neutral-very-dark-cyan;
+        padding: 1rem;
+        border-radius: .65rem;
+
+        display: flex;
+        flex-direction: column;
+        place-content: space-between;
+
+        &__box {
+            display: grid;
+            gap: .5rem;
+
+            &__row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                &__text {
+
+                    h1 {
+                        color: $neutral-light-grayish-cyan;
+                        font-size: .6rem;
+                    }
+                    p {
+                        color: $neutral-dark-grayish-cyan;
+                        font-size: .4rem;
+                    }
+                }
+
+                #tip_amount, #total_amount {
+                    color: $primary-strong-cyan;
+                }
+            }
+        }
+
+        #reset-btn {
+            font-family: $font-main;
+            background-color: $primary-strong-cyan;
+            border: none;
+            border-radius: .1rem;
+            padding: .35rem;
+        }
+    }
+
+    input {
+        font-family: $font-main;
+        font-size: .75rem;
+    }
+}
+
+input.custom-input {
+    padding: .2rem;
+    border: 1px solid $neutral-very-dark-cyan;
+    border-radius: .2rem;
+    background-color: $neutral-very-light-grayish-cyan;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  -moz-appearance: textfield; 
+  margin: 0; 
+}
