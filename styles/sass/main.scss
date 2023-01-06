@@ -39,7 +39,7 @@ body {
     gap: 2rem;
 
     svg {
-        place-self: center;    
+        place-self: center;
     }
 }
 
@@ -52,7 +52,6 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 
-
     &__left-col {
         display: grid;
         gap: 1rem;
@@ -61,8 +60,8 @@ body {
             display: flex;
             flex-direction: column;
             
-            // label {}
             #bill_input {
+                color: $neutral-very-dark-cyan;
                 background-image: url(../../images/icon-dollar.svg);
                 background-repeat: no-repeat;
                 background-position-y: center;
@@ -74,9 +73,7 @@ body {
         }
 
         &__select-tip {
-
             fieldset {border: none;}
-            // legend {}
 
             &__options {
 
@@ -90,10 +87,15 @@ body {
                     width: 100px;
                     padding: .2rem;
                     background-color: $neutral-very-dark-cyan;
-                    border: 1px solid $neutral-very-dark-cyan;
+                    border: none;
                     border-radius: .2rem;
                 }
+                .tipPercentage {
+                    color: $neutral-white;
+                }
+
                 #select_tip_custom_val {
+                    color: $neutral-very-dark-cyan;
                     text-align: right;
                     padding-right: .65rem;
                 }
@@ -104,9 +106,8 @@ body {
             display: flex;
             flex-direction: column;
 
-
-            // label {}
             #num_of_ppl {
+                color: $neutral-very-dark-cyan;
                 background-image: url(../../images/icon-person.svg);
                 background-repeat: no-repeat;
                 background-position-y: center;
@@ -118,6 +119,12 @@ body {
 
         label, legend {
             font-size: .6rem;
+            color: $neutral-grayish-cyan;
+            padding-bottom: .3rem;
+        }
+
+        ::placeholder {
+            color: $neutral-dark-grayish-cyan;
         }
     }
 
@@ -140,7 +147,6 @@ body {
                 justify-content: space-between;
 
                 &__text {
-
                     h1 {
                         color: $neutral-light-grayish-cyan;
                         font-size: .6rem;
@@ -153,16 +159,22 @@ body {
 
                 #tip_amount, #total_amount {
                     color: $primary-strong-cyan;
+                    font-size: 1.3rem;
                 }
-            }
+            }            
         }
 
         #reset-btn {
             font-family: $font-main;
-            background-color: $primary-strong-cyan;
+            background-color: lighten($neutral-very-dark-cyan, 5%);
+            color: $neutral-very-dark-cyan;
             border: none;
             border-radius: .1rem;
             padding: .35rem;
+        }
+        .activeResetBtn:hover {
+            background-color: lighten($primary-strong-cyan, 25%)!important;
+            cursor: pointer;
         }
     }
 
@@ -174,7 +186,7 @@ body {
 
 input.custom-input {
     padding: .2rem;
-    border: 1px solid $neutral-very-dark-cyan;
+    border: none;
     border-radius: .2rem;
     background-color: $neutral-very-light-grayish-cyan;
 }
@@ -182,6 +194,74 @@ input.custom-input {
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none;
-  -moz-appearance: textfield; 
   margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]:focus {
+    outline: 2px solid $primary-strong-cyan;
+}
+
+// HELPER CLASSES
+.activeBtn {
+    background-color: $primary-strong-cyan!important;
+    color: $neutral-very-dark-cyan!important;
+}
+.activeResetBtn {
+    background-color: $primary-strong-cyan!important;
+}
+
+label:has(+ input.invalidInput)::after {
+    content: "Can't be zero";
+    position: relative;
+    width: auto;
+    color: red;
+    font-size: .6rem;
+    float: right;
+}
+.invalidInput {
+    outline: 2px solid red!important;
+}
+
+// MEDIA QUERIES
+@media (max-width: 670px) {
+    body {
+        padding-top: 2rem;
+        place-content: unset;
+    }
+
+    .calculator {
+        width: 100vw;
+        grid-template-columns: 1fr;
+
+        &__left-col {
+            &__select-tip {
+                &__options {
+                    justify-items: center;
+                }
+            }
+        }
+
+        &__right-col {
+            #reset-btn {
+                margin-top: 2rem;
+            }
+        }
+    }
+}
+@media (max-width: 400px) {
+    .calculator {
+        &__left-col {
+            &__select-tip {
+                &__options {
+                    grid-template: 
+                        "a a"
+                        "a a"
+                        "a a";
+                }
+            }
+        }
+    }
 }

@@ -18,25 +18,25 @@
       <div class="calculator__left-col">
         <div class="calculator__left-col__bill-input">
           <label for="bill_input">Bill</label>
-          <input type="number" id="bill_input" class="custom-input" min="1">
+          <input type="number" id="bill_input" class="custom-input" placeholder="0" min="1">
         </div>
       
-        <form method="post" action="post" class="calculator__left-col__select-tip">      
+        <form class="calculator__left-col__select-tip" name="myForm" onsubmit="event.preventDefault();">      
           <fieldset>      
               <legend>Select Tip %</legend>   
               <div class="calculator__left-col__select-tip__options">
-                <input type="button" name="select_tip_value" value="5%">    
-                <input type="button" name="select_tip_value" value="10%">     
-                <input type="button" name="select_tip_value" value="15%">     
-                <input type="button" name="select_tip_value" value="25%">     
-                <input type="button" name="select_tip_value" value="50%">
+                <input type="button" name="select_tip_value" class="tipPercentage" value="5%">    
+                <input type="button" name="select_tip_value" class="tipPercentage" value="10%">     
+                <input type="button" name="select_tip_value" class="tipPercentage" value="15%">     
+                <input type="button" name="select_tip_value" class="tipPercentage" value="25%">     
+                <input type="button" name="select_tip_value" class="tipPercentage" value="50%">
                 <input type="number" name="select_tip_value" id="select_tip_custom_val" class="custom-input" placeholder="Custom" min="1">
               </div>   
           </fieldset>      
         </form>
         <div class="calculator__left-col__num-of-ppl">
           <label for="num_of_ppl">Number of People</label>
-          <input type="number" id="num_of_ppl" class="custom-input" min="1">
+          <input type="number" id="num_of_ppl" class="custom-input" placeholder="0" min="0">
         </div>
       </div>
 

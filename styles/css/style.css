@@ -36,6 +36,7 @@ body {
       display: flex;
       flex-direction: column; }
       .calculator__left-col__bill-input #bill_input {
+        color: #00494d;
         background-image: url(../../images/icon-dollar.svg);
         background-repeat: no-repeat;
         background-position-y: center;
@@ -52,15 +53,19 @@ body {
         width: 100px;
         padding: .2rem;
         background-color: #00494d;
-        border: 1px solid #00494d;
+        border: none;
         border-radius: .2rem; }
+      .calculator__left-col__select-tip__options .tipPercentage {
+        color: white; }
       .calculator__left-col__select-tip__options #select_tip_custom_val {
+        color: #00494d;
         text-align: right;
         padding-right: .65rem; }
     .calculator__left-col__num-of-ppl {
       display: flex;
       flex-direction: column; }
       .calculator__left-col__num-of-ppl #num_of_ppl {
+        color: #00494d;
         background-image: url(../../images/icon-person.svg);
         background-repeat: no-repeat;
         background-position-y: center;
@@ -68,7 +73,11 @@ body {
         text-align: right;
         padding-right: .65rem; }
     .calculator__left-col label, .calculator__left-col legend {
-      font-size: .6rem; }
+      font-size: .6rem;
+      color: #7f9c9f;
+      padding-bottom: .3rem; }
+    .calculator__left-col ::placeholder {
+      color: #5e7a7d; }
   .calculator__right-col {
     background-color: #00494d;
     padding: 1rem;
@@ -90,25 +99,69 @@ body {
           color: #5e7a7d;
           font-size: .4rem; }
         .calculator__right-col__box__row #tip_amount, .calculator__right-col__box__row #total_amount {
-          color: #26c0ab; }
+          color: #26c0ab;
+          font-size: 1.3rem; }
     .calculator__right-col #reset-btn {
       font-family: "Space Mono", monospace;
-      background-color: #26c0ab;
+      background-color: #006166;
+      color: #00494d;
       border: none;
       border-radius: .1rem;
       padding: .35rem; }
+    .calculator__right-col .activeResetBtn:hover {
+      background-color: #7fe6d8 !important;
+      cursor: pointer; }
   .calculator input {
     font-family: "Space Mono", monospace;
     font-size: .75rem; }
 
 input.custom-input {
   padding: .2rem;
-  border: 1px solid #00494d;
+  border: none;
   border-radius: .2rem;
   background-color: #f4fafa; }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  -moz-appearance: textfield;
   margin: 0; }
+
+input[type=number] {
+  -moz-appearance: textfield; }
+
+input[type=number]:focus {
+  outline: 2px solid #26c0ab; }
+
+.activeBtn {
+  background-color: #26c0ab !important;
+  color: #00494d !important; }
+
+.activeResetBtn {
+  background-color: #26c0ab !important; }
+
+label:has(+ input.invalidInput)::after {
+  content: "Can't be zero";
+  position: relative;
+  width: auto;
+  color: red;
+  font-size: .6rem;
+  float: right; }
+
+.invalidInput {
+  outline: 2px solid red !important; }
+
+@media (max-width: 670px) {
+  body {
+    padding-top: 2rem;
+    place-content: unset; }
+  .calculator {
+    width: 100vw;
+    grid-template-columns: 1fr; }
+    .calculator__left-col__select-tip__options {
+      justify-items: center; }
+    .calculator__right-col #reset-btn {
+      margin-top: 2rem; } }
+
+@media (max-width: 400px) {
+  .calculator__left-col__select-tip__options {
+    grid-template: "a a" "a a" "a a"; } }
